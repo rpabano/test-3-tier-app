@@ -1,0 +1,28 @@
+#!/bin/bash
+
+param=$1
+build() {
+  docker-compose build
+}
+
+deploy() {
+  docker-compose up
+}
+
+#entrypoint
+
+main() {
+#create /data if it doesn't exist
+[ ! -d /data ] && sudo mkdir /data
+
+case $param in
+  build)
+    build;;
+  deploy)
+    deploy;;
+  *)
+    echo "Usage: $0 <build|deploy>";;
+esac
+}
+
+main
