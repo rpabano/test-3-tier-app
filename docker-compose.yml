@@ -1,0 +1,21 @@
+services:
+    proxy:
+        image: jwilder/nginx-proxy
+        ports:
+            - "8080:80"
+        volumes:
+            - /var/run/docker.sock:/tmp/docker.sock:ro
+    web:
+        build: .
+        ports:
+            - "5000"
+        volumes:
+            - .:/code
+        environment:
+            - VIRTUAL_HOST=192.168.1.164
+            - VIRTUAL_PORT=5000
+    redis:
+        image: redis:alpine
+        command: --appendonly yes
+        volumes:
+            - /Users/ocel/data:/data
