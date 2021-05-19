@@ -1,6 +1,6 @@
 services:
     proxy:
-        image: jwilder/nginx-proxy
+        image: nginx:alpine
         ports:
             - "8080:80"
         volumes:
