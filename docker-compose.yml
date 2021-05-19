@@ -6,6 +6,8 @@ services:
         volumes:
             - /var/run/docker.sock:/tmp/docker.sock:ro
             - ./nginx.conf:/etc/nginx/nginx.conf
+        networks:
+            - "sharednet"
     web:
         build: .
         ports:
@@ -15,8 +17,14 @@ services:
         environment:
             - VIRTUAL_HOST=192.168.1.164
             - VIRTUAL_PORT=5000
+        networks:
+            - "sharednet"
     redis:
         image: redis:alpine
         command: --appendonly yes
         volumes:
             - /Users/ocel/data:/data
+        networks:
+            - "sharednet"
+networks:
+    sharednet: {}
