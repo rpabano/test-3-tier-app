@@ -23,7 +23,7 @@ services:
         image: redis:alpine
         command: --appendonly yes
         volumes:
-            - /Users/ocel/data:/data
+            - /data:/data
         networks:
             - "sharednet"
 networks:
