@@ -1,6 +1,6 @@
 # test-3-tier-app
 
-![Screenshot](architecture_diagram.drawio)
+![Screenshot](doc/architecture_diagram.drawio)
 
 This is an example of a 3-tier application.
 
